@@ -22,12 +22,12 @@ import org.web3j.evm.PassthroughTracer;
 import org.web3j.evm.EmbeddedWeb3jService;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.regreeter.Regreeter;
+import org.web3j.fibonacci.Fibonacci;
 import org.web3j.tx.Transfer;
 import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.utils.Convert;
 import org.web3j.crypto.RawTransaction;
-
+import java.math.BigInteger;
 import java.math.BigDecimal;
 
 public class Demo {
@@ -52,23 +52,13 @@ public class Demo {
         Web3j web3j = Web3j.build(new EmbeddedWeb3jService(configuration));
 
 
-        //Regreeter regreeter =
-        //        Regreeter.deploy(web3j, credentials, new DefaultGasProvider(), "Hello!").send(  );
-
-
-        Regreeter test =
-        Regreeter.load(
-                "0xcb0365cd172e1308ad995d5445234b1693b4e9c4",
-                web3j,
-                credentials,
-                new DefaultGasProvider());
-
-        TransactionReceipt transactionReceipt =
-            test.getGreeting().send();
-
-        System.out.println(transactionReceipt);
-
-        //String greet = regreeter.getGreeting().send();
-        //System.out.println("Greeter string value is: " + greet);
+        Fibonacci regreeter = Fibonacci.deploy(web3j,credentials,new DefaultGasProvider()).send();
+        System.out.println("Address:");
+        System.out.println(regreeter.getContractAddress());
+        System.out.println("Gas");
+        for(int i=0;i<10;i++){
+            System.out.println(regreeter.fibonacci(BigInteger.valueOf(i)).send());
+        }
+        
     }
 }
