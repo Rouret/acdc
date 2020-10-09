@@ -1,6 +1,5 @@
-# Minimal example for getting started with web3j-evm
+# ACDC project
 
-Contains a simple demo with required dependencies for you to get started with [web3j-evm](https://github.com/web3j/web3j-evm).
 
 ## Usage
 
@@ -10,8 +9,6 @@ cd into folder
 
 ./gradlew --console=plain clean build run
 
-## Demo
+Si vous êtes sur linux:
+./start
 
-Running the above will start the demo as shown below
-
-![](https://raw.githubusercontent.com/web3j/web3j-evmexample/master/resources/web3j-evm-demo.gif)
