@@ -17,58 +17,32 @@ import org.web3j.abi.datatypes.Address;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.evm.Configuration;
-import org.web3j.evm.ConsoleDebugTracer;
 import org.web3j.evm.PassthroughTracer;
 import org.web3j.evm.EmbeddedWeb3jService;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.regreeter.Regreeter;
-import org.web3j.tx.Transfer;
+import org.web3j.quicksort.QuickSort;
 import org.web3j.tx.gas.DefaultGasProvider;
-import org.web3j.utils.Convert;
-import org.web3j.crypto.RawTransaction;
 
-import java.math.BigDecimal;
+import org.web3j.generator.*;
+
 
 public class Demo {
     public static void main(String... args) throws Exception {
         Credentials credentials =
                 WalletUtils.loadCredentials("Password123", "resources/demo-wallet.json");
 
-        // Define our own address and how much ether to prefund this address with
         Configuration configuration = new Configuration(new Address(credentials.getAddress()), 10);
 
-        // When using the default constructor on ConsoleDebugTracer, it will look for
-        // contract meta data within "build/resources/main/solidity". This is where
-        // the Web3j gradle plugin will place these files, but you can pass in a different
-        // location if you have placed them elsewhere.
-        OperationTracer operationTracer = new ConsoleDebugTracer();
+        OperationTracer operationTracer = new PassthroughTracer();
 
-        // If you don't want console debugging, use PassthroughTracer instead..
-        //OperationTracer operationTracer = new PassthroughTracer();
-
-        // We use EmbeddedWeb3jService rather than the usual service implementation.
-        // This will let us run an EVM and a ledger inside the running JVM..
-        Web3j web3j = Web3j.build(new EmbeddedWeb3jService(configuration));
+        Web3j web3j = Web3j.build(new EmbeddedWeb3jService(configuration,operationTracer));
 
 
-        //Regreeter regreeter =
-        //        Regreeter.deploy(web3j, credentials, new DefaultGasProvider(), "Hello!").send(  );
+        String quickSortContractAddress = QuickSort.deploy(web3j, credentials, new DefaultGasProvider()).send().getContractAddress();
+        QuickSort deployedQuickSort = QuickSort.load(quickSortContractAddress, web3j, credentials,new DefaultGasProvider());
 
-
-        Regreeter test =
-        Regreeter.load(
-                "0xcb0365cd172e1308ad995d5445234b1693b4e9c4",
-                web3j,
-                credentials,
-                new DefaultGasProvider());
-
-        TransactionReceipt transactionReceipt =
-            test.getGreeting().send();
-
-        System.out.println(transactionReceipt);
-
-        //String greet = regreeter.getGreeting().send();
-        //System.out.println("Greeter string value is: " + greet);
+        for (int i = 1; i < 100; i++) {
+            System.out.println(deployedQuickSort.sort(ArrayGenerator.generateNumericalArray(200, i)).send().getGasUsed());
+        }
     }
 }
