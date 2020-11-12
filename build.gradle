@@ -19,12 +19,23 @@ repositories {
 dependencies {
     implementation "org.web3j:core:4.5.12"
     implementation "org.web3j:web3j-evm:4.5.12"
+    implementation "com.sparkjava:spark-core:2.9.3"
+    implementation "com.google.code.gson:gson:2.8.6"
 }
 
 application {
-    mainClassName = 'org.web3j.web3jevmexample.Demo'
+    mainClassName = 'org.web3j.api.Application'
 }
 
 run {
     standardInput = System.in
+}
+sourceSets {
+    main {
+        solidity {
+            srcDir { 
+                "$projectDir/resources/solidity" 
+             }
+        }
+    }
 }
