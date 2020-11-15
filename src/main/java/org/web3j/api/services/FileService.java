@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Objects;
 
 public class FileService {
-    public File[] getAvailableScript() throws URISyntaxException {
+    public File[] getAvailableScripts() throws URISyntaxException {
         FilenameFilter filter = (dir, name) -> name.endsWith(".bin");
         URL resource = FileService.class.getClassLoader().getResource("solidity");
         if (resource == null)

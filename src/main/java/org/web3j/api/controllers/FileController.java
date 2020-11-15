@@ -9,12 +9,12 @@ import java.util.Map;
 import org.web3j.api.services.FileService;
 
 public class FileController extends Controller {
-    public static String getAvailableScript() {
+    public static String getAvailableScripts() {
         FileService service = new FileService();
         File[] allFileNames;
         final Map<String, String[]> response = new HashMap<String, String[]>();
         try {
-            allFileNames = service.getAvailableScript();
+            allFileNames = service.getAvailableScripts();
             String[] fileNames = new String[allFileNames.length];
             for (int i = 0; i < allFileNames.length; i++) {
                 fileNames[i] = allFileNames[i].getName().split("\\.")[0];

@@ -20,6 +20,7 @@ dependencies {
     implementation "org.web3j:core:4.5.12"
     implementation "org.web3j:web3j-evm:4.5.12"
     implementation "com.sparkjava:spark-core:2.9.3"
+    implementation "org.reflections:reflections:0.9.11"
     implementation "com.google.code.gson:gson:2.8.6"
 }
 

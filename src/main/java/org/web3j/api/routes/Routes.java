@@ -8,7 +8,18 @@ import java.net.URL;
 import org.web3j.api.controllers.*;
 public class Routes {
    public static void load(){
-      get("/scripts",(req, res) -> FileController.getAvailableScript());
+      
+      // get("/scripts/:name/result",(req, res) -> Web3jController.process());
+
+      redirect.get("/scripts","/scripts/");
+
+      path("/scripts", () -> {
+         get("/", (request, response) -> FileController.getAvailableScripts());
+         
+         path("/:name", () -> {
+            get("/result", (request, response) -> Web3jController.process(request.params(":name"), null));
+         });
+     });
    }
 
 }
