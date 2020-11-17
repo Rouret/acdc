@@ -8,7 +8,6 @@ import org.web3j.api.routes.Routes;
 
 public class Application {
     public static void main(String[] args) {
-        
         new Application();
     }
     public Application(){

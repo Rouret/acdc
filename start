@@ -1,4 +1,4 @@
 #!/bin/bash
 clean
-./gradlew --console=plain clean build run
+./gradlew --console=plain clean build run 
 
