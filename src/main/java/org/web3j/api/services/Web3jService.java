@@ -51,19 +51,18 @@ public class Web3jService {
             if(filteredClass.length==1){
                 Class c= (Class) filteredClass[0];
                 System.out.println("Name class:"+c.getName());
-                String contratAddress = onClass(c)
-                        .call("deploy", this.web3j, this.credentials, new DefaultGasProvider()) 
-                        .call("send")    
-                        .call("getContractAddress")   
-                        .get();
-                System.out.println("contratAddress:"+contratAddress);
-                BigInteger gasUsed = onClass(c)
-                        .call("load", contratAddress, this.web3j, this.credentials,new DefaultGasProvider()) 
-                        .call("sort",ArrayGenerator.generateNumericalArray(200, 2))    
-                        .call("send")   
-                        .call("getGasUsed")   
-                        .get();
-                System.out.println("gasUsed:"+gasUsed);
+                for (int i = 1; i < 5; i++) {
+                    BigInteger gasUsed = onClass(c)
+                    .call("deploy", this.web3j, this.credentials, new DefaultGasProvider()) 
+                    .call("send") 
+                    .call("sort",ArrayGenerator.generateNumericalArray(200, i))  
+                    .call("send")    
+                    .call("getGasUsed")   
+                    .get();
+                    System.out.println("gasUsed:"+gasUsed);
+                }
+               
+                
             }else{
                 System.err.println("Not find");
             }
