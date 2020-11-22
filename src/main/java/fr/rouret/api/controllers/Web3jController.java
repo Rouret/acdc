@@ -1,6 +1,6 @@
-package org.web3j.api.controllers;
+package fr.rouret.api.controllers;
 
-import org.web3j.api.services.Web3jService;
+import fr.rouret.api.services.Web3jService;
 public class Web3jController extends Controller {
     public static String process(String scriptName, String[] params) {
         System.out.println("Script demandé:"+scriptName);

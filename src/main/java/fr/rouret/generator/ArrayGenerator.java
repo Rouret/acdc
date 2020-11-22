@@ -1,4 +1,4 @@
-package org.web3j.generator;
+package fr.rouret.generator;
 
 
 import java.math.BigInteger;

@@ -1,4 +1,4 @@
-package org.web3j.generator;
+package fr.rouret.generator;
 import java.util.Random;
 public class IntegerGenerator {
     public static void main(String[] args) {

@@ -1,11 +1,11 @@
-package org.web3j.api.routes;
+package fr.rouret.api.routes;
 
 import static spark.Spark.*;
 
 import java.io.File;
 import java.net.URL;
 
-import org.web3j.api.controllers.*;
+import fr.rouret.api.controllers.*;
 public class Routes {
    public static void load(){
       
@@ -15,7 +15,6 @@ public class Routes {
 
       path("/scripts", () -> {
          get("/", (request, response) -> FileController.getAvailableScripts());
-         
          path("/:name", () -> {
             get("/result", (request, response) -> Web3jController.process(request.params(":name"), null));
          });
