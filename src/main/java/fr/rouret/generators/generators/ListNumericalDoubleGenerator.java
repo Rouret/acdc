@@ -12,7 +12,7 @@ import fr.rouret.generators.Generator;
 public class ListNumericalDoubleGenerator extends Generator<List<Double>> {
 
     public ListNumericalDoubleGenerator() {
-        super("ListNumericalDoubleGenerator", new KeyValue<>("max", Double.class), new KeyValue<>("n", Integer.class));
+        super("ListNumericalDoubleGenerator", new KeyValue<>("lengthNumber", Double.class), new KeyValue<>("lengthList", Integer.class));
     }
 
     @Override

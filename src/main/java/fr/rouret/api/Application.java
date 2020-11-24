@@ -2,14 +2,12 @@ package fr.rouret.api;
 
 import static spark.Spark.*;
 
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.web3j.abi.datatypes.Address;
@@ -21,10 +19,7 @@ import org.web3j.evm.EmbeddedWeb3jService;
 import org.web3j.evm.PassthroughTracer;
 import org.web3j.protocol.Web3j;
 import org.hyperledger.besu.ethereum.vm.OperationTracer;
-
-import fr.rouret.KeyValue;
 import fr.rouret.api.routes.Routes;
-import fr.rouret.generators.Generator;
 import fr.rouret.generators.GeneratorHandler;
 import fr.rouret.scripts.ScriptHandler;
 
@@ -53,6 +48,8 @@ public class Application {
         // SETUP API
         before((request, response) -> {
             response.type(Application.RESPONSE_TYPE);
+            if(!this.isRunning) halt(401, "The api is starting ...");
+            
         });
         System.out.println("ok");
         // INIT
@@ -149,7 +146,7 @@ public class Application {
         return new PassthroughTracer();
     }
     private Configuration loadConfiguration(){
-        return new Configuration(new Address(this.getCredentials().getAddress()), 10000);
+        return new Configuration(new Address(this.getCredentials().getAddress()), 1000000000);
     }
 
     private Credentials loadCredential(String s, String ressourceName) throws IOException, CipherException {

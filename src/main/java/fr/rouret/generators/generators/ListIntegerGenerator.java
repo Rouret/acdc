@@ -12,7 +12,7 @@ import fr.rouret.generators.Generator;
 public class ListIntegerGenerator extends Generator<List<BigInteger>> {
 
     public ListIntegerGenerator() {
-        super("ListIntegerGenerator", new KeyValue<>("min", Integer.class),new KeyValue<>("max", Integer.class), new KeyValue<>("n", Integer.class));
+        super("ListIntegerGenerator", new KeyValue<>("min", Integer.class),new KeyValue<>("max", Integer.class), new KeyValue<>("lengthList", Integer.class));
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ListIntegerGenerator extends Generator<List<BigInteger>> {
         int n = Integer.parseInt(args[2]);
         List<BigInteger> list = new ArrayList<BigInteger>();
         for (int i = 0; i < n; i++) {
-            list.add(BigInteger.valueOf((Integer) Application.getInstance().getGeneratorHandler().getGenerator("IntegerGenerator").generate(min,max)));
+            list.add((BigInteger) Application.getInstance().getGeneratorHandler().getGenerator("IntegerGenerator").generate(min,max));
         }
         return list;
     }

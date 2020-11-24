@@ -46,7 +46,7 @@ public abstract class Generator<T> {
         JsonArray args = new JsonArray();
         for (KeyValue<String, Class> arg : this.args) {
             JsonObject argument = new JsonObject();
-            argument.addProperty("name", arg.getKey());
+            argument.addProperty("name", arg.getKey()+"Generator");
             argument.addProperty("type", arg.getValue().getSimpleName());
             args.add(argument);
         }

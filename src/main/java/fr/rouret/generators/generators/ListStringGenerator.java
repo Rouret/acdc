@@ -11,7 +11,7 @@ import fr.rouret.generators.Generator;
 public class ListStringGenerator extends Generator<List<String>> {
 
     public ListStringGenerator() {
-        super("ListStringGenerator", new KeyValue<>("lenght", Integer.class),new KeyValue<>("n", Integer.class));
+        super("ListStringGenerator", new KeyValue<>("lenght", Integer.class),new KeyValue<>("lengthList", Integer.class));
     }
 
     @Override

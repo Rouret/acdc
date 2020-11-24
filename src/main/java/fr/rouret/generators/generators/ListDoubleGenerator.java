@@ -11,7 +11,7 @@ import fr.rouret.generators.Generator;
 public class ListDoubleGenerator extends Generator<List<Double>> {
 
     public ListDoubleGenerator() {
-        super("ListDoubleGenerator", new KeyValue<>("min", Double.class),new KeyValue<>("max", Double.class), new KeyValue<>("n", Integer.class));
+        super("ListDoubleGenerator", new KeyValue<>("min", Double.class),new KeyValue<>("max", Double.class), new KeyValue<>("lengthList", Integer.class));
     }
 
     @Override

@@ -6,7 +6,7 @@ import fr.rouret.generators.Generator;
 public class NumericalDoubleGenerator extends Generator<Double> {
 
     public NumericalDoubleGenerator() {
-        super("NumericalDoubleGenerator", new KeyValue<>("max", Double.class));
+        super("NumericalDoubleGenerator", new KeyValue<>("length", Double.class));
     }
 
     @Override

@@ -1,19 +1,37 @@
 package fr.rouret.api.controllers;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
+
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import fr.rouret.api.services.FileService;
+import fr.rouret.api.services.Web3jService;
 
 public class FileController extends Controller {
     public static String getAvailableScripts() throws URISyntaxException, IOException {
-        FileService service = new FileService();
-        return gson.toJson(service.getAvailableScripts().stream().map(c->c.getSimpleName()).toArray(String[]::new));
+        FileService fileService = new FileService();
+
+        Web3jService web3jService=new Web3jService();
+        String[] listScripts = fileService.getAvailableScripts().stream().map(c->c.getSimpleName()).toArray(String[]::new);
+
+        JsonObject json = new JsonObject();
+        JsonArray arryJson = new JsonArray();
+        for (String scriptName : listScripts) {
+            try {
+                JsonObject scriptJson = new JsonObject();
+                scriptJson.addProperty("name", scriptName);
+                scriptJson.add("params", web3jService.getContractInfo(scriptName).toJson());
+                arryJson.add(scriptJson);
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+            
+        }
+        json.add("scripts",arryJson);
+        return json.toString();
     }
 }
