@@ -4,7 +4,7 @@ contract MergeSort {
     /*
      * Adapted from: https://www.geeksforgeeks.org/merge-sort/
      */
-    function sort(uint[] memory arr) public pure returns(uint[] memory) {
+    function run(uint[] memory arr) public pure returns(uint[] memory) {
         uint n = arr.length;
         
         if (n < 2) {

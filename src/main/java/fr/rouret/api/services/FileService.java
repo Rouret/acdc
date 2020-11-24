@@ -33,4 +33,27 @@ public class FileService {
         .findFirst()
         .get();
     }
+
+
+    public List<Class<?>> getAvailableGenerator() throws URISyntaxException, IOException {
+        ScanResult scanResult = new ClassGraph().acceptPackages("fr.rouret.generator")
+                .enableClassInfo().scan();
+        return scanResult.getAllClasses().loadClasses();
+    }
+    private boolean isGeneratorAvailable(String generatorName) throws URISyntaxException, IOException {
+        Object[] filteredClass = this.getAvailableGenerator()
+                    .stream()
+                    .filter(className -> className.getSimpleName().equalsIgnoreCase(generatorName))
+                    .toArray();
+        return filteredClass.length != 1;
+    }
+    public Class getClassOfGenerator(String generatorName) throws Exception {
+        if(this.isGeneratorAvailable(generatorName))
+            throw new Exception("erreur");
+        return this.getAvailableGenerator()
+        .stream()
+        .filter(className-> className.getSimpleName().equalsIgnoreCase(generatorName))
+        .findFirst()
+        .get();
+    }
 }

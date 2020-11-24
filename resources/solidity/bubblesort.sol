@@ -2,7 +2,7 @@ pragma solidity >=0.4.21 <0.6.0;
 
 contract Bubblesort {
     
-    function sort(uint[] memory data) public returns(uint[] memory) {
+    function run(uint[] memory data) public returns(uint[] memory) {
        bubblesort(data);
        return data;
     }

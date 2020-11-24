@@ -2,7 +2,7 @@ pragma solidity >=0.4.21 <0.6.0;
 
 contract QuickSort {
     
-    function sort(uint[] memory data) public returns(uint[] memory) {
+    function run(uint[] memory data) public returns(uint[] memory) {
        quickSort(data, int(0), int(data.length - 1));
        return data;
     }

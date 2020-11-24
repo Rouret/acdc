@@ -16,8 +16,10 @@ public class Routes {
       path("/scripts", () -> {
          get("/", (request, response) -> FileController.getAvailableScripts());
          path("/:name", () -> {
-            get("/result", (request, response) -> Web3jController.process(request.params(":name"), null));
+            get("/result", (request, response) -> Web3jController.getResultOfContract(request.params(":name"), request.queryMap()));
+            get("", (request, response) -> Web3jController.getContractInfo(request.params(":name")));
          });
+
      });
    }
 
