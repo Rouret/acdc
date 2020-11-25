@@ -2,14 +2,10 @@ package fr.rouret.api;
 
 import static spark.Spark.*;
 
-
 import java.io.File;
 import java.io.IOException;
-
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
-
 import org.web3j.abi.datatypes.Address;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
@@ -35,6 +31,7 @@ public class Application {
     private GeneratorHandler generatorHandler;
     //Constantes
     public final static String SOLIDITY_FOLDER_NAME = "solidity";
+    public final static String CONF_NAME = "conf.json";
     public final static int PORT = 8080;
     public final static String RESPONSE_TYPE="application/json";
     public final static String DEFAULT_METHOD_START="run";
@@ -67,16 +64,7 @@ public class Application {
             Application.web3j = Web3j.build(new EmbeddedWeb3jService(this.configuration, this.operationTracer));
 
             System.out.println("OK");
-
-            //TEST pour un fichier conf
-            // System.out.println("TEST");
-            // ArrayList<String> data = new ArrayList<String>();
-            // InputStream confStream = this.getClass().getClassLoader().getResourceAsStream("conf/solidity_type.conf");
-            // BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(confStream));
-            // bufferedReader.lines().forEach(conf->data.add(conf));
-            // System.out.println(data.toString());
-            // System.out.println("ok");
-
+            
             System.out.println(">Load scripts ...");
             
             URL scriptsURL = this.getClass().getClassLoader().getResource(Application.SOLIDITY_FOLDER_NAME);
@@ -90,34 +78,11 @@ public class Application {
             generatorHandler = new GeneratorHandler();
             System.out.println("OK");
 
-            System.out.println(">TEST");
-            // Generator<?> generator = generatorHandler.getGenerator("ArrayStringGenerator");
-            // System.out.println(generator.getName());
-            // System.out.println("Args : ");
-            // for (KeyValue<String, Class> arg : generator.getArgs())
-            //     System.out.println(arg.getKey() + " as " + arg.getValue());
-            
-            // Object generate = generator.generate(8,50);
-            // System.out.println(generate);
-            System.out.println(">FIN TEST");
-
             this.isRunning=true;
 
             Routes.load();
             System.out.println("===========");
-            System.out.println("API is UP ");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(0);
-            // TODO: handle exception
-        } catch (CipherException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.exit(0);
-        } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            System.exit(0);
+            System.out.println("API is UP");
         }catch(Exception e){
             e.printStackTrace();
             System.exit(0);

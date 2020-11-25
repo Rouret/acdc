@@ -2,8 +2,6 @@ package fr.rouret.api.controllers;
 
 import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.Set;
-
 import com.google.gson.JsonObject;
 
 import fr.rouret.api.services.Web3jService;

@@ -2,9 +2,6 @@ package fr.rouret.generators;
 
 import fr.rouret.KeyValue;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import com.google.gson.JsonArray;
@@ -12,10 +9,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 
-/**
- * @author Baptiste MAQUET on 23/11/2020
- * @project tets
- */
 public abstract class Generator<T> {
 
     protected static  final Random RANDOM = new Random();

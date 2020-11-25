@@ -6,10 +6,7 @@ import java.util.Random;
 import fr.rouret.KeyValue;
 import fr.rouret.generators.Generator;
 
-/**
- * @author Baptiste MAQUET on 23/11/2020
- * @project tets
- */
+
 public class IntegerGenerator extends Generator<BigInteger> {
 
     public IntegerGenerator() {

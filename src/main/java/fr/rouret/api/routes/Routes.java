@@ -2,10 +2,6 @@ package fr.rouret.api.routes;
 
 import static spark.Spark.*;
 
-import java.io.File;
-import java.net.URL;
-import java.util.Map;
-
 import fr.rouret.api.controllers.*;
 import spark.Request;
 import spark.Response;

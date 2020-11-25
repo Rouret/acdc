@@ -6,10 +6,7 @@ import fr.rouret.generators.generators.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Baptiste MAQUET on 23/11/2020
- * @project tets
- */
+
 public class GeneratorHandler {
 
     private Map<String, Generator<?>> generators = new HashMap<>();

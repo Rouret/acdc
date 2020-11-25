@@ -3,10 +3,7 @@ package fr.rouret.generators.generators;
 import fr.rouret.KeyValue;
 import fr.rouret.generators.Generator;
 
-/**
- * @author Baptiste MAQUET on 23/11/2020
- * @project tets
- */
+
 public class StringGenerator extends Generator<String> {
     //33-47 & 58-64 & 91-96 & 123-125 = caracteres spéciaux
     //48-57 = chiffres
