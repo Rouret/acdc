@@ -132,3 +132,55 @@ Le projet comporte 3 services:
 * **GET /scripts/{scriptName}/result**
 
 Il n'y que le 3 services qui a besoin d'autre parametre.
+
+PS: Tous les paramatres avec "lengthNumber" repressent le nombre de nombre, exemple:
+*lengthNumber=2 => min=-99 et max=99*
+
+# **GET /scripts/{scriptName}/result**
+
+Parametres obligatoire:
+
+nom | type |description 
+--- | --- | --- 
+inc | int | Nombre d'incrémentation
+numberOfLoop | int  | Nombre de tests
+selected | string  | Le parametre a faire varier
+
+
+Pour appeler le 3eme service il faut s'appuyé de ce qui est donné dans **/scripts** ou **/scripts/{scriptName}**.
+
+Exemple:
+
+**GET /scripts/quicksort**
+```json
+    {
+        "name": "quicksort",
+        "params": {
+            "generatorName": "ListNumericalGenerator",
+            "arguments": [
+                {
+                    "name": "lengthNumberGenerator",
+                    "type": "Integer"
+                },
+                {
+                    "name": "lengthListGenerator",
+                    "type": "Integer"
+                }
+            ]
+        }
+    }
+```
+
+Ici il est mentionné qu'il doit y avoir **lengthNumberGenerator** et **lengthListGenerator** qui doit etre donné.Imaginons que nous voulions faire varier la taille de la liste de 1 sur 10 tours on aura donc:
+
+param | value 
+--- | --- 
+inc | 1  
+numberOfLoop | 10  
+selected | lengthListGenerator  
+lengthNumberGenerator | 2
+lengthListGenerator | 1
+<br>
+
+soit :
+**GET /scripts/QuickSort/result?lengthNumberGenerator=2&lengthListGenerator=1&selected=lengthListGenerator&inc=1&numberOfLoop=10**
