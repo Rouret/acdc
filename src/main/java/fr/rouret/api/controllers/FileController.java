@@ -27,7 +27,7 @@ public class FileController extends Controller {
                 scriptJson.add("params", web3jService.getContractInfo(scriptName).toJson());
                 arryJson.add(scriptJson);
             } catch (Exception e) {
-                //TODO: handle exception
+                //Ne rien mettre quand certain script ne sont pas fonctionnel et donc genere une erreur
             }
             
         }

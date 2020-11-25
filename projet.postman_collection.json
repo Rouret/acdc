@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "157978ab-6738-4a1b-b479-0d628ded9a81",
+		"name": "projet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/script/:name/result",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/scripts/Fibonacci/result?lengthListGenerator=2&selected=lengthGenerator&minRange=2&maxRange=10&inc=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"scripts",
+						"Fibonacci",
+						"result"
+					],
+					"query": [
+						{
+							"key": "lengthListGenerator",
+							"value": "2"
+						},
+						{
+							"key": "nGenerator",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "selected",
+							"value": "lengthGenerator"
+						},
+						{
+							"key": "minRange",
+							"value": "2"
+						},
+						{
+							"key": "maxRange",
+							"value": "10"
+						},
+						{
+							"key": "inc",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/scripts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/scripts"
+			},
+			"response": []
+		},
+		{
+			"name": "/:name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/scripts/Bubblesort"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

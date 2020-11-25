@@ -127,9 +127,8 @@ Possédent les classes qui gerents l'acces aux abi
 Les requetes postman sont dans le fichiers :**projet.postman_collection.json**
 
 Le projet comporte 3 services:
--**GET /scripts**
--**GET /scripts/{scriptName}**
--**GET /scripts/{scriptName}/result**
+* **GET /scripts**
+* **GET /scripts/{scriptName}**
+* **GET /scripts/{scriptName}/result**
 
 Il n'y que le 3 services qui a besoin d'autre parametre.
-En effet avant 
